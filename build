@@ -1,0 +1,50 @@
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace RaidersMod.Items
+{
+	public class ColdSword : ModItem
+	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("ColdSword"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+			Tooltip.SetDefault("it seems cold but,is not cold(then why is called cold?)");
+		}
+		public override void SetDefaults()
+		{
+
+			item.damage = 18;
+			item.melee = true;
+			item.width = 40;
+			item.height = 40;
+			item.useTime = 20;
+			item.useAnimation = 25;
+			item.useStyle = 1;
+			item.knockBack = 4;
+			item.value = 10000;
+			item.rare = 2;
+			item.UseSound = SoundID.Item1;
+			item.autoReuse = true;
+			item.useAmmo = AmmoID.IceBolt;
+			Items.shoot. = 1;
+			Items.shootSpeed = 20f;
+			{
+				
+			};
+		}
+
+		public override void AddRecipes() 
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.LeadBar, 15);
+			recipe.AddIngredient(ItemID.IceBlock, 30);
+			recipe.AddTile(TileID.Anvils);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
+			public override void OnHitNPC(Terraria.Player player , Terraria.NPC target , int damage, float KnockBack, bool crit) 
+		{
+			target.AddBuff(BuffID.Frozen,350) ;//Adds the debuff,second argument = amount of frames
+		}
+	}
+}
